@@ -1,10 +1,7 @@
 [project]
-name = "pyvista-mcp-server"
-version = "0.1.0"
+dependencies = ["mcp[cli]>=1.6.0", "pyvista[all]>=0.44.2"]
 description = "Add your description here"
+name = "pyvista-mcp-server"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = [
-    "mcp[cli]>=1.6.0",
-    "pyvista[all]>=0.44.2",
-]
+version = "0.1.0"

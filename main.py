@@ -7,6 +7,11 @@ server = MCPServer()
 
 @server.route("/render-sphere")
 def render_sphere():
+    """
+    Render a sphere using PyVista and return the rendered image.
+
+    This function is called when the "/render-sphere" endpoint is accessed.
+    """
     # Create a PyVista sphere
     sphere = pv.Sphere()
 

@@ -1,12 +1,12 @@
-from mcp import MCPServer
-import pyvista as pv
+from mcp import MCPServer  # type: ignore[import]
+import pyvista as pv  # type: ignore[import]
 
 # Initialize the MCP server
 server = MCPServer()
 
 
-@server.route("/render-sphere")
-def render_sphere():
+@server.route("/render-sphere")  # type: ignore[misc]
+def render_sphere() -> None:
     """
     Render a sphere using PyVista and return the rendered image.
 

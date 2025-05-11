@@ -1,5 +1,6 @@
 from mcp.server.fastmcp import FastMCP
 import pyvista as pv
+from pathlib import Path
 
 
 mcp = FastMCP("Demo", debug=True)
@@ -43,7 +44,7 @@ def hello_world() -> str:
     # p.show()
     # Export this plotter as an interactive scene to a HTML file.
     p.export_html("a_basic.html")
-    return "Hello world!"
+    return Path.cwd() / "a_basic.html"
 
 
 if __name__ == "__main__":

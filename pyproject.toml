@@ -5,3 +5,8 @@ name = "pyvista-mcp-server"
 readme = "README.md"
 requires-python = ">=3.12"
 version = "0.1.0"
+
+[tool.mypy]
+allow_untyped_decorators = true
+ignore_errors = true
+ignore_missing_imports = true

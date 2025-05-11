@@ -7,7 +7,7 @@ mcp = FastMCP("Demo", debug=True)
 
 
 @mcp.tool()
-def hello_world() -> str:
+def hello_world() -> Path:
     """Hello world!"""
     cyl = pv.Cylinder()
     arrow = pv.Arrow()

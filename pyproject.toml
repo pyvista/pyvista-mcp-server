@@ -6,6 +6,9 @@ readme = "README.md"
 requires-python = ">=3.12"
 version = "0.1.0"
 
+# The following mypy configuration is intentionally relaxed for early-stage development.
+# Type checking is currently deprioritized to allow for rapid prototyping.
+# These settings may be revisited and tightened as the project matures.
 [tool.mypy]
 allow_untyped_decorators = true
 ignore_errors = true

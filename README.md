@@ -28,9 +28,9 @@ To configure the MCP server, use the following JSON structure in your settings:
     "mcp-demo-server": {
       "disabled": false,
       "timeout": 600,
-      "command": "/Users/tetsuokoyama/pyvista-mcp-server/venv/bin/python",
+      "command": "<path-to-python-executable>",
       "args": [
-        "/Users/tetsuokoyama/pyvista-mcp-server/src/pyvista_mcp_server/server.py"
+        "<path-to-server-script>"
       ],
       "transportType": "stdio"
     }

@@ -29,9 +29,7 @@ To configure the MCP server, use the following JSON structure in your settings:
       "disabled": false,
       "timeout": 600,
       "command": "<path-to-python-executable>",
-      "args": [
-        "<path-to-server-script>"
-      ],
+      "args": ["<path-to-server-script>"],
       "transportType": "stdio"
     }
   }

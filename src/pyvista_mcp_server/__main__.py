@@ -1,6 +1,7 @@
 from mcp.server.fastmcp import FastMCP
 import pyvista as pv
 from pathlib import Path
+from typing import Sequence
 
 
 mcp = FastMCP("Demo", debug=True)
@@ -48,9 +49,62 @@ def hello_world() -> Path:
 
 
 @mcp.tool()
-def add(a: int, b: int) -> int:
-    """Add two numbers together."""
-    return a + b
+def sphere(
+    radius: float = 0.5,
+    center: Sequence[float] = (0.0, 0.0, 0.0),
+    filename: Path = Path("sphere_mesh.vtk"),
+) -> Path:
+    """Create a sphere mesh and save it to a file.
+
+    Parameters
+    ----------
+    radius : float, default: 0.5
+        Sphere radius.
+
+    center : sequence[float], default: (0.0, 0.0, 0.0)
+        Center coordinate vector in ``[x, y, z]``.
+
+    filename : Path, default: Path("sphere_mesh.vtk")
+        Filename of mesh to be written.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
+
+    Returns
+    -------
+    Path
+        The path to the output mesh file.
+    """
+    sphere = pv.Sphere(radius=radius, center=center)
+    output_path = Path.cwd() / "sphere_mesh.vtk"
+    sphere.save(output_path)
+    return output_path
+
+
+@mcp.tool()
+def add(a: Path, b: Path) -> Path:
+    """Add two mesh files together.
+
+    Parameters
+    ----------
+    a : Path
+        The first mesh file.
+
+    b : Path
+        The second mesh file.
+
+    Returns
+    -------
+    Path
+        The path to the output mesh file.
+    """
+    mesh_a = pv.read(a)
+    mesh_b = pv.read(b)
+    mesh_c = mesh_a + mesh_b
+    output_path = Path.cwd() / "output_mesh.vtk"
+    mesh_c.save(output_path)
+    return output_path
 
 
 if __name__ == "__main__":

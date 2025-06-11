@@ -50,36 +50,30 @@ def hello_world() -> Path:
 
 @mcp.tool()
 def sphere(
+    filename: Path,
     radius: float = 0.5,
     center: Sequence[float] = (0.0, 0.0, 0.0),
-    filename: Path = Path("sphere.vtk"),
-) -> Path:
+) -> None:
     """Create a sphere mesh and save it to a file.
 
     Parameters
     ----------
-    radius : float, default: 0.5
-        Sphere radius.
-
-    center : sequence[float], default: (0.0, 0.0, 0.0)
-        Center coordinate vector in ``[x, y, z]``.
-
-    filename : Path, default: Path("sphere.vtk")
+    filename : Path
         Filename of mesh to be written.  File type is inferred from
         the extension of the filename unless overridden with
         ftype.  Can be one of many of the supported  the following
         types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
         ``'.obj'``, ``'.iv'``).
 
-    Returns
-    -------
-    Path
-        The path to the output mesh file.
+    radius : float, default: 0.5
+        Sphere radius.
+
+    center : sequence[float], default: (0.0, 0.0, 0.0)
+        Center coordinate vector in ``[x, y, z]``.
+
     """
     sphere = pv.Sphere(radius=radius, center=center)
-    output_path = Path.cwd() / "sphere.vtk"
-    sphere.save(output_path)
-    return output_path
+    sphere.save(filename)
 
 
 @mcp.tool()

@@ -52,7 +52,7 @@ def hello_world() -> Path:
 def sphere(
     radius: float = 0.5,
     center: Sequence[float] = (0.0, 0.0, 0.0),
-    filename: Path = Path("sphere_mesh.vtk"),
+    filename: Path = Path("sphere.vtk"),
 ) -> Path:
     """Create a sphere mesh and save it to a file.
 
@@ -64,7 +64,7 @@ def sphere(
     center : sequence[float], default: (0.0, 0.0, 0.0)
         Center coordinate vector in ``[x, y, z]``.
 
-    filename : Path, default: Path("sphere_mesh.vtk")
+    filename : Path, default: Path("sphere.vtk")
         Filename of mesh to be written.  File type is inferred from
         the extension of the filename unless overridden with
         ftype.  Can be one of many of the supported  the following
@@ -77,7 +77,7 @@ def sphere(
         The path to the output mesh file.
     """
     sphere = pv.Sphere(radius=radius, center=center)
-    output_path = Path.cwd() / "sphere_mesh.vtk"
+    output_path = Path.cwd() / "sphere.vtk"
     sphere.save(output_path)
     return output_path
 

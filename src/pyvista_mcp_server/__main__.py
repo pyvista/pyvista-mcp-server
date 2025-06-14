@@ -134,5 +134,35 @@ def triangulate(
     mesh.triangulate().save(filename.with_suffix(".triangulated.vtk"))
 
 
+@mcp.tool()
+def boolean_intersection(
+    filename: Path,
+    other_mesh: Path,
+    output_filename: Path,
+) -> None:
+    """Perform a boolean intersection of two meshes.
+
+    Parameters
+    ----------
+    filename : path
+	First mesh file to read.
+
+    other_mesh : path
+	Second mesh file to read.
+
+    output_filename : path
+	Filename of mesh to be written.  File type is inferred from
+	the extension of the filename unless overridden with
+	ftype.  Can be one of many of the supported  the following
+	types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+	``'.obj'``, ``'.iv'``).
+
+    """
+    mesh = pv.read(filename)
+    other_mesh = pv.read(other_mesh)
+    result = mesh & other_mesh
+    result.save(output_filename)
+
+
 if __name__ == "__main__":
     mcp.run(transport="stdio")

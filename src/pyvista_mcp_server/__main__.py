@@ -114,5 +114,25 @@ def cube(
     cube.save(filename)
 
 
+@mcp.tool()
+def triangulate(
+    filename: Path,
+) -> None:
+    """More complex polygons will be broken down into triangles.
+
+    Parameters
+    ----------
+    filename : path
+        Filename of mesh to be written.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
+
+    """
+    mesh = pv.read(filename)
+    mesh.triangulate().save(filename.with_suffix(".triangulated.vtk"))
+
+
 if __name__ == "__main__":
     mcp.run(transport="stdio")

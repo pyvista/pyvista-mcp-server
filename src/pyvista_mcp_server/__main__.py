@@ -162,7 +162,7 @@ def boolian_difference(
     result = mesh - other_mesh
     result.save(save_filename)
 
-    
+
 @mcp.tool()
 def boolean_union(
     filename: Path,
@@ -229,6 +229,7 @@ def boolean_intersection(
     other_mesh = pv.read(other_filename)
     result = mesh & other_mesh
     result.save(output_filename)
+
 
 @mcp.tool()
 def is_all_triangules(

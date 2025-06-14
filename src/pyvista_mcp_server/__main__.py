@@ -291,5 +291,32 @@ def flip_faces(
     flipped_mesh.save(output_filename)
 
 
+@mcp.tool()
+def plot(
+    filename: Path,
+) -> None:
+    """Plot a mesh in a PyVista plotter.
+
+    Parameters
+    ----------
+    filename : path
+        Filename of mesh to be plotted.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
+
+    Returns
+    -------
+    StringIO
+        Returns the HTML as a StringIO object.
+
+    """
+    mesh = pv.read(filename)
+    p = pv.Plotter()
+    p.add_mesh(mesh, color="tan", show_edges=True)
+    return p.export_html()
+
+
 if __name__ == "__main__":
     mcp.run(transport="stdio")

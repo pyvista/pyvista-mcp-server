@@ -145,14 +145,14 @@ def boolian_difference(
     Parameters
     ----------
     filename : path
-	Filename of mesh to be written.  File type is inferred from
-	the extension of the filename unless overridden with
-	ftype.  Can be one of many of the supported  the following
-	types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
-	``'.obj'``, ``'.iv'``).
+        Filename of mesh to be written.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
 
     other_filename : path
-	Second mesh to perform the boolean operation with.
+        Second mesh to perform the boolean operation with.
 
     save_filename : path
         Output filename to save the result of the boolean operation.

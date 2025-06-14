@@ -231,6 +231,5 @@ def boolean_intersection(
     result.save(output_filename)
 
 
-
 if __name__ == "__main__":
     mcp.run(transport="stdio")

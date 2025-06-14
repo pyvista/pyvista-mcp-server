@@ -58,10 +58,10 @@ def sphere(
 
     Parameters
     ----------
-    filename : path
-        filename of mesh to be written.  file type is inferred from
+    filename : Path
+        Filename of mesh to be written.  File type is inferred from
         the extension of the filename unless overridden with
-        ftype.  can be one of many of the supported  the following
+        ftype.  Can be one of many of the supported  the following
         types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
         ``'.obj'``, ``'.iv'``).
 
@@ -89,9 +89,9 @@ def cube(
     Parameters
     ----------
     filename : path
-        filename of mesh to be written.  file type is inferred from
+        Filename of mesh to be written.  File type is inferred from
         the extension of the filename unless overridden with
-        ftype.  can be one of many of the supported  the following
+        ftype.  Can be one of many of the supported  the following
         types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
         ``'.obj'``, ``'.iv'``).
 

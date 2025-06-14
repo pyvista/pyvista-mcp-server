@@ -258,6 +258,40 @@ def is_all_triangules(
 
 
 @mcp.tool()
+def flip_faces(
+    filename: Path,
+    output_filename: Path,
+) -> None:
+    """Flip the orientation of the faces.
+
+    The flip is performed by reversing the order of indices in the cell
+    connectivity list. In other libraries, this operation is sometimes
+    referred to as "flip orientation", "reverse cells", "reverse face
+    orientations", or similar.
+
+    Parameters
+    ----------
+    filename : path
+        Filename of mesh to be flipped.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
+
+    output_filename : path
+        Filename of mesh to be written.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
+
+    """
+    mesh = pv.read(filename)
+    flipped_mesh = mesh.flip_faces()
+    flipped_mesh.save(output_filename)
+
+
+@mcp.tool()
 def plot(
     filename: Path,
 ) -> None:

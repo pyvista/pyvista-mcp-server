@@ -162,6 +162,73 @@ def boolian_difference(
     result = mesh - other_mesh
     result.save(save_filename)
 
+    
+@mcp.tool()
+def boolean_union(
+    filename: Path,
+    other_filename: Path,
+    save_filename: Path,
+) -> None:
+    """Perform a boolean union operation on two meshes.
+
+    Parameters
+    ----------
+    filename : str, Path
+        First mesh file to be read.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
+
+    other_filename : str, Path
+        Second mesh file to be read.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
+
+    save_filename : str, Path
+        Filename of mesh to be written.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
+
+    """
+    mesh = pv.read(filename)
+    other_mesh = pv.read(other_filename)
+    result = mesh | other_mesh
+    result.save(save_filename)
+
+
+@mcp.tool()
+def boolean_intersection(
+    filename: Path,
+    other_filename: Path,
+    output_filename: Path,
+) -> None:
+    """Perform a boolean intersection of two meshes.
+
+    Parameters
+    ----------
+    filename : path
+        First mesh file to read.
+
+    other_filename : path
+        Second mesh file to read.
+
+    output_filename : path
+        Filename of mesh to be written.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
+
+    """
+    mesh = pv.read(filename)
+    other_mesh = pv.read(other_filename)
+    result = mesh & other_mesh
+    result.save(output_filename)
 
 @mcp.tool()
 def is_all_triangules(
@@ -172,11 +239,11 @@ def is_all_triangules(
     Parameters
     ----------
     filename : path
-	Filename of mesh to be checked.  File type is inferred from
-	the extension of the filename unless overridden with
-	ftype.  Can be one of many of the supported  the following
-	types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
-	``'.obj'``, ``'.iv'``).
+        Filename of mesh to be checked.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
 
     Returns
     -------

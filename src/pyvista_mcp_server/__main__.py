@@ -129,14 +129,9 @@ def triangulate(
         types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
         ``'.obj'``, ``'.iv'``).
 
-    Returns
-    -------
-    pyvista.PolyData
-        Mesh containing only triangles.
-
     """
     mesh = pv.read(filename)
-    return mesh.triangulate()
+    mesh.triangulate().save(filename.with_suffix(".triangulated.vtk"))
 
 
 if __name__ == "__main__":

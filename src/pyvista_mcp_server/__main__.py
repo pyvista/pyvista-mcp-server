@@ -145,17 +145,17 @@ def boolean_intersection(
     Parameters
     ----------
     filename : path
-	First mesh file to read.
+        First mesh file to read.
 
     other_mesh : path
-	Second mesh file to read.
+        Second mesh file to read.
 
     output_filename : path
-	Filename of mesh to be written.  File type is inferred from
-	the extension of the filename unless overridden with
-	ftype.  Can be one of many of the supported  the following
-	types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
-	``'.obj'``, ``'.iv'``).
+        Filename of mesh to be written.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
 
     """
     mesh = pv.read(filename)

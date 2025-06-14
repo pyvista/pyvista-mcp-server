@@ -272,11 +272,11 @@ def flip_faces(
     Parameters
     ----------
     filename : path
-	Filename of mesh to be flipped.  File type is inferred from
-	the extension of the filename unless overridden with
-	ftype.  Can be one of many of the supported  the following
-	types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
-	``'.obj'``, ``'.iv'``).
+        Filename of mesh to be flipped.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
 
     output_filename : path
         Filename of mesh to be written.  File type is inferred from

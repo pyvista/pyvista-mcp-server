@@ -159,7 +159,7 @@ def boolian_difference(
     """
     mesh = pv.read(filename)
     other_mesh = pv.read(other_filename)
-    result = mesh.boolean_difference(other_mesh)
+    result = mesh - other_mesh
     result.save(save_filename)
 
 

@@ -108,7 +108,9 @@ def cube(
         Length of the cube in the z-direction.
 
     """
-    cube = pv.Cube(center=center, x_length=x_length, y_length=y_length, z_length=z_length)
+    cube = pv.Cube(
+        center=center, x_length=x_length, y_length=y_length, z_length=z_length
+    )
     cube.save(filename)
 
 

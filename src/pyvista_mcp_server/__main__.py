@@ -166,7 +166,7 @@ def boolian_difference(
 @mcp.tool()
 def boolean_intersection(
     filename: Path,
-    other_mesh: Path,
+    other_filename: Path,
     output_filename: Path,
 ) -> None:
     """Perform a boolean intersection of two meshes.
@@ -176,7 +176,7 @@ def boolean_intersection(
     filename : path
         First mesh file to read.
 
-    other_mesh : path
+    other_filename : path
         Second mesh file to read.
 
     output_filename : path
@@ -188,7 +188,7 @@ def boolean_intersection(
 
     """
     mesh = pv.read(filename)
-    other_mesh = pv.read(other_mesh)
+    other_mesh = pv.read(other_filename)
     result = mesh & other_mesh
     result.save(output_filename)
 

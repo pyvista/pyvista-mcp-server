@@ -58,10 +58,10 @@ def sphere(
 
     Parameters
     ----------
-    filename : Path
-        Filename of mesh to be written.  File type is inferred from
+    filename : path
+        filename of mesh to be written.  file type is inferred from
         the extension of the filename unless overridden with
-        ftype.  Can be one of many of the supported  the following
+        ftype.  can be one of many of the supported  the following
         types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
         ``'.obj'``, ``'.iv'``).
 
@@ -74,6 +74,42 @@ def sphere(
     """
     sphere = pv.Sphere(radius=radius, center=center)
     sphere.save(filename)
+
+
+@mcp.tool()
+def cube(
+    filename: Path,
+    center: Sequence[float] = (0.0, 0.0, 0.0),
+    x_length: float = 1.0,
+    y_length: float = 1.0,
+    z_length: float = 1.0,
+) -> None:
+    """Create a cube mesh and save it to a file.
+
+    Parameters
+    ----------
+    filename : path
+        filename of mesh to be written.  file type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
+
+    center : sequence[float], default: (0.0, 0.0, 0.0)
+        Center in ``[x, y, z]``.
+
+    x_length : float, default: 1.0
+        Length of the cube in the x-direction.
+
+    y_length : float, default: 1.0
+        Length of the cube in the y-direction.
+
+    z_length : float, default: 1.0
+        Length of the cube in the z-direction.
+
+    """
+    cube = pv.Cube(center=center, x_length=x_length, y_length=y_length, z_length=z_length)
+    cube.save(filename)
 
 
 if __name__ == "__main__":

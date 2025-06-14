@@ -145,18 +145,18 @@ def boolean_union(
     Parameters
     ----------
     filename : str, Path
-	First mesh file to be read.  File type is inferred from
-	the extension of the filename unless overridden with
-	ftype.  Can be one of many of the supported  the following
-	types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
-	``'.obj'``, ``'.iv'``).
+        First mesh file to be read.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
 
     other_filename : str, Path
-	Second mesh file to be read.  File type is inferred from
-	the extension of the filename unless overridden with
-	ftype.  Can be one of many of the supported  the following
-	types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
-	``'.obj'``, ``'.iv'``).
+        Second mesh file to be read.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
 
     save_filename : str, Path
         Filename of mesh to be written.  File type is inferred from
@@ -170,6 +170,7 @@ def boolean_union(
     other_mesh = pv.read(other_filename)
     result = mesh | other_mesh
     result.save(save_filename)
+
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")

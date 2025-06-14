@@ -231,5 +231,31 @@ def boolean_intersection(
     result.save(output_filename)
 
 
+@mcp.tool()
+def is_all_triangules(
+    filename: Path,
+) -> bool:
+    """Return if all the faces of the :class:`pyvista.PolyData` are triangles.
+
+    Parameters
+    ----------
+    filename : path
+        Filename of mesh to be checked.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
+
+    Returns
+    -------
+    bool
+        ``True`` if all the faces of the :class:`pyvista.PolyData`
+        are triangles and does not contain any vertices or lines.
+
+    """
+    mesh = pv.read(filename)
+    return mesh.is_all_triangles()
+
+
 if __name__ == "__main__":
     mcp.run(transport="stdio")

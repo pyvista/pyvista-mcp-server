@@ -135,6 +135,35 @@ def triangulate(
 
 
 @mcp.tool()
+def boolian_difference(
+    filename: Path,
+    other_filename: Path,
+    save_filename: Path,
+) -> None:
+    """Perform a boolean difference operation on two meshes.
+
+    Parameters
+    ----------
+    filename : path
+        Filename of mesh to be written.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
+
+    other_filename : path
+        Second mesh to perform the boolean operation with.
+
+    save_filename : path
+        Output filename to save the result of the boolean operation.
+    """
+    mesh = pv.read(filename)
+    other_mesh = pv.read(other_filename)
+    result = mesh - other_mesh
+    result.save(save_filename)
+
+
+@mcp.tool()
 def boolean_union(
     filename: Path,
     other_filename: Path,

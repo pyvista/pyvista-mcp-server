@@ -117,6 +117,7 @@ def cube(
 @mcp.tool()
 def triangulate(
     filename: Path,
+    save_filename: Path,
 ) -> None:
     """More complex polygons will be broken down into triangles.
 
@@ -129,9 +130,12 @@ def triangulate(
         types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
         ``'.obj'``, ``'.iv'``).
 
+    save_filename: Path,
+        Output filename to save the result of the triangulate operation.
+
     """
     mesh = pv.read(filename)
-    mesh.triangulate().save(filename.with_suffix(".triangulated.vtk"))
+    mesh.triangulate().save(save_filename)
 
 
 @mcp.tool()

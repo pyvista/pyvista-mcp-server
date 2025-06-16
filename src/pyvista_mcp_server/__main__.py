@@ -2,7 +2,6 @@ from mcp.server.fastmcp import FastMCP
 import pyvista as pv
 from pathlib import Path
 from typing import Sequence
-import sys
 
 
 mcp = FastMCP("Demo", debug=True)

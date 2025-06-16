@@ -29,3 +29,7 @@ To configure the MCP server, use the following JSON structure in your settings:
 ```
 
 This configuration specifies the command and arguments to run the MCP server, along with other settings like timeout and transport type.
+
+## Example Usage
+
+https://github.com/user-attachments/assets/244d7f7d-1432-4d11-8b12-b0138e97746a

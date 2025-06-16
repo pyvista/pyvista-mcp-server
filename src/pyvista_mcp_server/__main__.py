@@ -300,7 +300,7 @@ def flip_faces(
 def plot(
     filename: Path,
     output_filename: Path,
-) -> Path:
+) -> None:
     """Plot a mesh in a PyVista plotter.
 
     Parameters
@@ -315,17 +315,11 @@ def plot(
     output_filename : Path
         Path to export the html file to.
 
-    Returns
-    -------
-    Path
-        Absolute path to export the html file to.
-
     """
     mesh = pv.read(filename)
     p = pv.Plotter()
     p.add_mesh(mesh, color="tan", show_edges=True)
     p.export_html(output_filename)
-    return sys.executable / output_filename
 
 
 if __name__ == "__main__":

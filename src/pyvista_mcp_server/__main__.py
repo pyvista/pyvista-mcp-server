@@ -298,7 +298,8 @@ def flip_faces(
 @mcp.tool()
 def plot(
     filename: Path,
-) -> None:
+    output_filename: Path,
+) -> Path:
     """Plot a mesh in a PyVista plotter.
 
     Parameters
@@ -310,16 +311,20 @@ def plot(
         types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
         ``'.obj'``, ``'.iv'``).
 
+    output_filename : Path
+        Path to export the html file to.
+
     Returns
     -------
-    StringIO
-        Returns the HTML as a StringIO object.
+    Path
+        Absolute path to export the html file to.
 
     """
     mesh = pv.read(filename)
     p = pv.Plotter()
     p.add_mesh(mesh, color="tan", show_edges=True)
-    return p.export_html()
+    p.export_html(output_filename)
+    return Path(output_filename).absolute()
 
 
 if __name__ == "__main__":

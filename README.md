@@ -32,4 +32,4 @@ This configuration specifies the command and arguments to run the MCP server, al
 
 ## Example Usage
 
-![boolean_operations](boolean_operations.gif)
+https://github.com/user-attachments/assets/244d7f7d-1432-4d11-8b12-b0138e97746a

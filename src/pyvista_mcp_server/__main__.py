@@ -117,6 +117,7 @@ def cube(
 @mcp.tool()
 def triangulate(
     filename: Path,
+    save_filename: Path,
 ) -> None:
     """More complex polygons will be broken down into triangles.
 
@@ -129,9 +130,12 @@ def triangulate(
         types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
         ``'.obj'``, ``'.iv'``).
 
+    save_filename: Path,
+        Output filename to save the result of the triangulate operation.
+
     """
     mesh = pv.read(filename)
-    mesh.triangulate().save(filename.with_suffix(".triangulated.vtk"))
+    mesh.triangulate().save(save_filename)
 
 
 @mcp.tool()
@@ -294,7 +298,8 @@ def flip_faces(
 @mcp.tool()
 def plot(
     filename: Path,
-) -> None:
+    output_filename: Path,
+) -> Path:
     """Plot a mesh in a PyVista plotter.
 
     Parameters
@@ -306,16 +311,20 @@ def plot(
         types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
         ``'.obj'``, ``'.iv'``).
 
+    output_filename : Path
+        Path to export the html file to.
+
     Returns
     -------
-    StringIO
-        Returns the HTML as a StringIO object.
+    Path
+        Absolute path to export the html file to.
 
     """
     mesh = pv.read(filename)
     p = pv.Plotter()
     p.add_mesh(mesh, color="tan", show_edges=True)
-    return p.export_html()
+    p.export_html(output_filename)
+    return Path(output_filename).absolute()
 
 
 if __name__ == "__main__":

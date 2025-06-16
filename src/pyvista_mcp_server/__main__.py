@@ -323,7 +323,8 @@ def plot(
     mesh = pv.read(filename)
     p = pv.Plotter()
     p.add_mesh(mesh, color="tan", show_edges=True)
-    return p.export_html(output_filename)
+    p.export_html(output_filename)
+    return output_filename
 
 
 if __name__ == "__main__":

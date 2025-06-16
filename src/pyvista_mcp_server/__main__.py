@@ -282,8 +282,12 @@ def flip_faces(
         types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
         ``'.obj'``, ``'.iv'``).
 
-    output_filename : Path
-        Path to export the html file to.
+    output_filename : path
+        Filename of mesh to be written.  File type is inferred from
+        the extension of the filename unless overridden with
+        ftype.  Can be one of many of the supported  the following
+        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
+        ``'.obj'``, ``'.iv'``).
 
     """
     mesh = pv.read(filename)
@@ -307,6 +311,9 @@ def plot(
         types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
         ``'.obj'``, ``'.iv'``).
 
+    output_filename : Path
+        Path to export the html file to.
+
     Returns
     -------
     StringIO
@@ -316,7 +323,7 @@ def plot(
     mesh = pv.read(filename)
     p = pv.Plotter()
     p.add_mesh(mesh, color="tan", show_edges=True)
-    return p.export_html()
+    return p.export_html(output_filename)
 
 
 if __name__ == "__main__":

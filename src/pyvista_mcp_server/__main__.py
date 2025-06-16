@@ -282,12 +282,8 @@ def flip_faces(
         types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
         ``'.obj'``, ``'.iv'``).
 
-    output_filename : path
-        Filename of mesh to be written.  File type is inferred from
-        the extension of the filename unless overridden with
-        ftype.  Can be one of many of the supported  the following
-        types (``'.ply'``, ``'.vtp'``, ``'.stl'``, ``'.vtk``, ``'.geo'``,
-        ``'.obj'``, ``'.iv'``).
+    output_filename : Path
+        Path to export the html file to.
 
     """
     mesh = pv.read(filename)
@@ -298,6 +294,7 @@ def flip_faces(
 @mcp.tool()
 def plot(
     filename: Path,
+    output_filename: Path,
 ) -> None:
     """Plot a mesh in a PyVista plotter.
 
